@@ -1,0 +1,7 @@
+,Classifier,By,Preprocessed,Vectorizer,Ngram,TopKFeatures,TrainAccuracy,TestAccuracy
+0,XGBClassifier,full_text,1,CountVectorizer,"(1, 1)",9000,0.4701148853014028,0.4516442209554156
+1,XGBClassifier,full_text,1,CountVectorizer,"(1, 1)",10500,0.46962323097795644,0.4515197530556869
+2,XGBClassifier,full_text,1,CountVectorizer,"(1, 1)",12000,0.4694614206942906,0.4522914540340046
+3,XGBClassifier,full_text,1,TfidfVectorizer,"(1, 1)",9000,0.48592250532106895,0.4574693186627169
+4,XGBClassifier,full_text,1,TfidfVectorizer,"(1, 1)",10500,0.48607809213228614,0.4567971920041821
+5,XGBClassifier,full_text,1,TfidfVectorizer,"(1, 1)",12000,0.4855988847537372,0.456622936944562

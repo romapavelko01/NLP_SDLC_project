@@ -1,0 +1,8 @@
+,Classifier,By,Preprocessed,Vectorizer,Ngram,TopKFeatures,Best_parameters,TestAccuracy
+1,MultinomialNB,full_text,0,CountVectorizer,"(1, 1)",7500,"{'alpha': 1.0, 'fit_prior': True}",0.5626695875133803
+0,LinearSVC,full_text,0,TfidfVectorizer,"(1, 1)",7500,"{'dual': True, 'max_iter': 4000, 'C': 1}",0.6023499539468771
+2,ComplementNB,full_text,0,TfidfVectorizer,"(1, 1)",7500,"{'alpha': 1.0, 'fit_prior': True, 'norm': False}",0.553782579472754
+3,XGBClassifier,full_text,0,CountVectorizer,"(1, 2)",4500,"{'learning_rate': 0.15, 'max_depth': 4, 'n_estimators': 150, 'n_jobs': -1}",0.5397923875432526
+6,RandomForestClassifier,headline,1,TfidfVectorizer,"(1, 1)",7500,"{'n_jobs': -1, 'max_depth': None}",0.4828607702073635
+4,PassiveAggressiveClassifier,full_text,0,TfidfVectorizer,"(1, 2)",7500,"{'max_iter': 2500, 'C': 0.5, 'n_jobs': -1}",0.5795972218764781
+5,SGDClassifier,full_text,0,CountVectorizer,"(1, 1)",7500,"{'max_iter': 2500, 'n_jobs': -1, 'learning_rate': 'adaptive', 'eta0': 0.1}",0.5887082721366159

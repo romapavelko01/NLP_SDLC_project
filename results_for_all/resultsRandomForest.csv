@@ -1,0 +1,7 @@
+,Classifier,By,Preprocessed,Vectorizer,Ngram,TopKFeatures,TrainAccuracy,TestAccuracy
+0,RandomForestClassifier,full_text,1,CountVectorizer,"(1, 1)",9000,0.9969193811378997,0.49199671404744716
+1,RandomForestClassifier,full_text,1,CountVectorizer,"(1, 1)",10500,0.9971869904531933,0.49386373254337707
+2,RandomForestClassifier,full_text,1,CountVectorizer,"(1, 1)",12000,0.9977782203358185,0.4959298996788728
+3,RandomForestClassifier,full_text,1,TfidfVectorizer,"(1, 1)",9000,0.9984876961949689,0.5094222200094596
+4,RandomForestClassifier,full_text,1,TfidfVectorizer,"(1, 1)",10500,0.9985499309194559,0.5107166861666377
+5,RandomForestClassifier,full_text,1,TfidfVectorizer,"(1, 1)",12000,0.998786422872506,0.5129571083617535
