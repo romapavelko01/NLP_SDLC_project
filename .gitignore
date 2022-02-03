@@ -1,5 +1,7 @@
 # Ignore Mac system files
 .DS_store
 
-# Ignore node_modules folder
+# Ignore  folders
 data
+.idea
+.ipynb_checkpoints
