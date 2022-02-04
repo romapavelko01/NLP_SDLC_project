@@ -3,5 +3,5 @@
 
 # Ignore  folders
 data
-.idea/
+.idea/*
 .ipynb_checkpoints
