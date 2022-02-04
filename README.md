@@ -55,7 +55,15 @@ each wordcloud contains up to 100 words, where the bigger words correspond to th
 
 ## Classifications with Machine Learning models
 
-For this, I decided to first work with text data from only the top 5 most frequent news categories, and then with data from all categories.
+For this, I decided to first work with text data from only the top 5 most frequent news categories (since I could draw insight about models much quicker since models had to work with less data, as top 5 categories had only around 80k news articles, and then with data from all categories.
+**Important:** below is the list of ML models I considered as for this project (all, except the `XGBClassifier` from `xgboost` library, come from `sklearn`)
+* MultinomialNB 
+* ComplementNB
+* LinearSVC
+* XGBClassifier
+* PassiveAggressiveClassifier
+* SGDClassifier
+* RandomForestClassifier
 
 ### What classification was made on
 Since the goal was to develop the most efficient model possible, I decided to track the performance of classification made 
@@ -105,8 +113,57 @@ features, leaving only the top *k* for the trainining. That number, *k*, is also
 
 The only metric I relied on when training models is the accuracy, the fraction of correctly classified news articles.
 
-# Performance
+### Performance
 
+**NOTE:** the data was split into train/test at 80/20 ratio, with respect to the distribution of news articles of different categories.
+That basically means that the exactly same portion of each news category, present in the original non-split dataset, was held both in train and test datasets.
 
+Also, the performance data is stored in the *results_...* folders as .csv files.
 
+#### Peaking accuracies per classifier type
 
+Let's first check performance of models trained on data containing news from only top 5 most frequent categories
+
+<p align="center">
+  <img src="final_images/peak_performance_top_5.png" title="Peaking accuracies for top5 categories:"/>
+</p>
+
+Now, performance of models trained on data with all categories
+
+<p align="center">
+  <img src="final_images/peak_performance_all.png" title="Peaking accuracies for all categories:"/>
+</p>
+
+#### Closer look at how different parameter (such as Vectorizer type, number of features selected etc.) affected the accuracy
+
+Below graphs represent also what type of data - whether preprocessed or not, whether *headline*, *short_description* or *full_text* fits each model better.
+**NOTE:** each graph has only up to 50 data points (ordered by accuracy, descendingly) per each classifier (did not want the graphs to be too clustered).
+
+Again, starting with top 5 categories classification:
+
+<p align="center">
+  <img src="final_images/performance_for_top_5.png" title="Performance per model, data with top 5 categories:"/>
+</p>
+
+Now, for all category classification (notice that the top right subplot representing TfidfVectorizer for MultinomialNB model is empty; it is because the model was not trained with full-size data, transformed by TfidfVectorizer
+
+<p align="center">
+  <img src="final_images/performance_for_all.png" title="Performance per model, data with all categories:"/>
+</p>
+
+#### Insights
+
+One of the biggest insights for me was to discover that with increasing the number of features selected per vectorizer, meaning more words and word phrases are considered, the accuracy will not necessarily rise. This also relates to preprocessing the data, meaning some models performed better on raw data.
+However, for some models there is a strong preference towards specific type of vectorizer, as well as specific type of data to classify on.
+
+### Tuned models performance
+
+Since cross-validation should be used during hyperparameter tuning, and, considering I decided to stick to KFold CV, at each fold the vectorizers had to be reset. Also I tuned each of the models' parameters separately, but at a smaller portion of data, which again is the data with only top 5 categories. Below are the results, and in the folder *results_after_tuning* one can find a small .csv file containing both the classifier's parameters which maximized accuracy on smaller portion of data, and the accuracy calculated after testing a model, trained on full-sized data (again, ratio train/test is 80/20)
+
+<p align="center">
+  <img src="final_images/max_tuned_performance_all.png" title="Performance per model after tuning, data with all categories:"/>
+</p>
+
+### Conclusions on the ML part
+
+Again, each model should be treated differently, with data preprocessed (or not) in specific way, having a specific vectorizer fit etc. The assumption of 'the more, the better' in terms of features selected does not hold in my case, first of all, visually; further in-depth research in the ML part could be done. Still, I received a peaking 58.5% accuracy on LinearSVC, which is quite a satisfying result to me, given that the number of classes, news categories, is 41.
