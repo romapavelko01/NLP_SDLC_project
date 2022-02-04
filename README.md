@@ -52,3 +52,49 @@ each wordcloud contains up to 100 words, where the bigger words correspond to th
 <p align="center">
   <img src="EDA/WELLNESS_wordcloud_100_words.JPEG" width="750" height="450" title="Wordcloud for Wellness news:"/>
 </p>
+
+## Classifications with Machine Learning models
+
+For this, I decided to first work with text data from only the top 5 most frequent news categories, and then with data from all categories.
+
+### What classification was made on
+Since the goal was to develop the most efficient model possible, I decided to track the performance of classification made 
+both on *preprocessed* and *raw* data, and or any type of text data available, that is: 
+* news article body from *short_description* column;
+* news article headline from *headline* column;
+* combined text data from *short_descrption* and *headline* from separate *full_text* column;
+
+### Data preprocessing
+Models, trained on preprocessed data, needed to have the text data processed in some way. 
+
+First of all, it was important to remove words that are used in almost any sentence, such as 'the', 'a', 'and', 'is', etc.
+The reason is simple, they carried much weight in each category, making some category-spesific words relatively invisible.
+These are the so called ***stopwords***, and, hopefully, Python library named **nltk** provides a possibility for such operations
+in the form of a specific set of stopwords. Each piece of text data in the columns specified above was transformed to lower-case and stopwords were removed from it.
+
+Then, I made sure any numeric and non-alphanumeric symbols were removed too. Examples of such symbols are punctuation symbols, '$', '#' and others that might make the data noisy. 
+
+### Vectorization
+Machine learning models heavily rely on numerical data, or at least categorical. However, when in our case we have a total of thousands of unique words,
+it makes sense to convert text data to some model-friendly format. This can be done with the technique called ***vectorization***, which is basically a numerical
+representation of text.
+
+For this project I mainly focused on 2 types of vectorizers, available in the *sklearn*:
+* CountVectorizer
+* TfidfVectorizer
+
+**CountVectorizer** is the so called *bag-of-words* - that represents each word as the number of times it appears in the documents. CountVectorizer converts
+collection of text documents to a matrix of token counts.
+
+**TfidfVectorizer** - from **TF-IDF**, `Term Frequency x Inverse Document Frequency`, which multiplies the term frequency in specific document *d* by the inverse document frequency, the log of (number of documents/(number of documents that have a token *t* + 1)), in such a way discarding the importance of very frequent words - converts a collection of raw documents to a matrix of TF-IDF features.
+
+
+**NOTE:** Since both vectorizers can be specified with what stopwords to use (parameter `stop_words`), I still decided to go with the `nltk`'s set, since it has more words.
+
+Also, as for checking performance, I decided to let the vectorizers analyze different word combinations, by setting `ngram_range` parameter to specific tuple values:
+* (1, 1) lets the vectorizer analyze singe words only, the so called *Unigrams*
+* (1, 2) lets the vectorizer analysze both single words and word pairs, *Unigrams* and *Bigrams*
+* (2, 2) lets the vectorizer analyze word pair only, the *Bigrams*
+
+! vectorizers do have the possibility to remove stopwords !
+
