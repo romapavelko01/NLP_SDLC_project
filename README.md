@@ -96,5 +96,17 @@ Also, as for checking performance, I decided to let the vectorizers analyze diff
 * (1, 2) lets the vectorizer analysze both single words and word pairs, *Unigrams* and *Bigrams*
 * (2, 2) lets the vectorizer analyze word pair only, the *Bigrams*
 
-! vectorizers do have the possibility to remove stopwords !
+### Feature selection
+
+Matrices, obtained by words and word phrases getting transformed by vectorizers, are then fed to selector (*SelectKBest* instance, which is initialized with the scoring function that assigns values to features, in my case it is the *f_classif*, based on ANOVA F-value) in order to filter
+features, leaving only the top *k* for the trainining. That number, *k*, is also the parameter I tuned, checking models performance trained at 6k to 14k *TopKFeatures* selected.
+
+### Metrics
+
+The only metric I relied on when training models is the accuracy, the fraction of correctly classified news articles.
+
+# Performance
+
+
+
 
