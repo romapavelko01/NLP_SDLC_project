@@ -23,12 +23,12 @@ A total of 200853 news are in the dataset
 
 #### Across categories
 It is important to mention that there are 41 different news categories, moreover, as the below graphs shows, their distribution is far from equal, which might be a problem for some classifiers.
-![Bar plot in descending order, the largest categories are: POLITICS, WELLNESS, ENTERTAINMENT](https://github.com/romapavelko01/NLP_SDLC_project/blob/main/EDA/cats_distribution_SNS.png)
+![Bar plot in descending order, the largest categories are: POLITICS, WELLNESS, ENTERTAINMENT](EDA/cats_distribution_SNS.png)
 
 
 #### Across time
 Unlike per-category news distribution, the distribution across time (more specifically, time period from 28th January, 2012 up to 26th May, 2018) seems to be a bit more linearly stable, despite the spike in the beginning and fall in the ending parts of the graph.
-![\---/-like distribution across time](https://github.com/romapavelko01/NLP_SDLC_project/blob/main/EDA/date_distribution_SNS.png)
+![\---/-like distribution across time](EDA/date_distribution_SNS.png)
 
 ### The most common words per category
 For this part, I have decided to use *wordcloud* visualisations for the three largest (by number of news) categories; 
@@ -38,17 +38,17 @@ each wordcloud contains up to 100 words, where the bigger words correspond to th
 
 **Wordcloud for Politics news:**
 <p align="center">
-  <img src="https://github.com/romapavelko01/NLP_SDLC_project/blob/main/EDA/POLITICS_wordcloud_100_words.JPEG" width="750" height="450" />
+  <img src="EDA/POLITICS_wordcloud_100_words.JPEG" width="750" height="450" />
 </p>
 
 
 **Wordcloud for Entertainment news:**
 <p align="center">
-  <img src="https://github.com/romapavelko01/NLP_SDLC_project/blob/main/EDA/ENTERTAINMENT_wordcloud_100_words.JPEG" width="750" height="450" />
+  <img src="EDA/ENTERTAINMENT_wordcloud_100_words.JPEG" width="750" height="450" />
 </p>
 
 
 **Wordcloud for Wellness news:**
 <p align="center">
-  <img src="https://github.com/romapavelko01/NLP_SDLC_project/blob/main/EDA/WELLNESS_wordcloud_100_words.JPEG" width="750" height="450" title="Wordcloud for Wellness news:"/>
+  <img src="EDA/WELLNESS_wordcloud_100_words.JPEG" width="750" height="450" title="Wordcloud for Wellness news:"/>
 </p>
